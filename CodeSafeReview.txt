@@ -1,0 +1,49 @@
+I want to put in some failsafes when generating code with Claude, since I am often hitting message and token limits.
+
+Would the following code protocol help? Make any adjustments to optimise it for writing code with Claude
+
+Edit
+Looking at your checkpointing protocol, it's a solid foundation but needs some adjustments to work optimally with Claude. Let me break this down:
+
+Current Protocol Assessment
+Strengths:
+
+Incremental saving concept is excellent
+Versioning with timestamps prevents overwrites
+Focus on preventing code loss is crucial
+Issues for Claude optimization:
+
+The ---SAVE FILE:--- format won't actually save files (Claude can't write to your disk)
+500-1000 line chunks are too large for most Claude responses
+Missing integration with Claude's artifact system
+Doesn't account for Claude's inability to see previous conversation context
+Optimized Protocol for Claude
+Here's a revised approach that works with Claude's capabilities:
+
+Core Strategy:
+Use artifacts as your primary checkpointing mechanism
+Break work into smaller, logical chunks (100-300 lines max)
+Create explicit handoff instructions for continuation
+Build in recovery mechanisms for interrupted sessions
+Recommended Workflow:
+1. Initial Planning Phase
+
+Start each coding session by asking Claude to create a detailed plan
+Request a modular breakdown of the codebase
+Ask for dependency mapping between components
+2. Incremental Development
+
+Request one complete, functional module per response
+Each artifact should be self-contained and testable
+Include clear "next steps" at the end of each response
+3. Checkpointing Format Instead of file saves, use:
+
+Artifacts for current working code
+Explicit status summaries ("Completed: X, Y, Z. Next: A, B, C")
+Dependency lists for each component
+4. Session Recovery When resuming, provide Claude with:
+
+Previous artifacts (copy/paste the code)
+Status summary from last session
+Specific next task to continue
+Would you like me to create a more detailed implementation guide, or do you want to test this approach with a specific coding project first?

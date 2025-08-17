@@ -1,0 +1,10 @@
+You will be writing large code files that may exceed message limits.  
+Please follow the checkpoint protocol:  
+- Save progress in <10k char chunks using `_WIP_vN` filenames.  
+- Always output the full cumulative file, not just the new part.  
+- Use the marker:  
+  ---SAVE FILE: filename_WIP_vN.ext---  
+  <code block>  
+- After saving, give a short progress summary and clear resume instructions.  
+- On a new response, reload the latest WIP and continue seamlessly.  
+- When done, rename the latest WIP to the final file name.  

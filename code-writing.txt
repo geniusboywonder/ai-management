@@ -1,0 +1,26 @@
+You are tasked with writing a large software file that may exceed your message length limits. 
+Before you reach your output/message length cap, you must SAVE your partial progress into a local file. Be aware of message length constraints and automatically break down its output. A simple check of the character count before sending can trigger the chunking mechanism.
+
+Do not discard partial code.
+
+Rules:
+1. Write code to disk in small, logical increments (e.g., per function, class, or module—aim for 500-1000 lines max per chunk to avoid overload).
+2. Save cumulative progress to versioned files using the format:  
+   ---SAVE FILE: <filename>_WIP_<timestamp>.ext---  
+   <full code block> 
+3. Each time you save, overwrite the `_WIP` file with the latest progress.
+4. At the start of each new response (or after an interuption), read any existing `_WIP` file and continue appending from where you left off. Do not repeat code already saved.
+5. Once the file is fully written and validated, rename `*_WIP_<timestamp>.ext` → final file name (e.g., `main.py`).
+6. If the task spans multiple files, use the same `_WIP` pattern for each.
+7. Provide clear markers like:
+   - `---SAVE FILE: main_WIP.py---`
+   - followed by only the code block.
+8. After saving, output instructions for how to resume (e.g., “Next step: continue writing function XYZ”).
+
+At no point should you throw away written code. Always checkpoint.
+
+
+Chunking: Agent avoids dumping too much at once.
+Persistence: Work-in-progress file keeps state between messages.
+Recovery: Even if interrupted, you can resume from _WIP.
+Finalization: Rename ensures you know when code is production-ready.
