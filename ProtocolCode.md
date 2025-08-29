@@ -9,14 +9,14 @@ Begin with a concise checklist (3-7 bullets) of what you will do; keep items con
 ### Mandatory Instructions
 
 1. **Plan & Track Progress**
-    - In the root of each project, create (or update) a ClaudeProgress.md as a working document to plan and track progress. In the document:
+    - In the root of each project, create (or update) a docs/PROGRESS.md as a working document to plan and track progress. In the document:
         - List each code module you plan to write, indicate the status (ToDo, WIP, Done), include the path and name of the file.
         - Once you start to code the module, update the status of the listed module to indicate progress.
         - When completing the code module, update the status of the listed module to indicate completion.
         - If you need to add new modules after writing the plan, update the plan.
 2. **Always checkpoint code to disk** before reaching output or token limits. Never discard partially completed work.
 3. **Incremental Saving:**
-    - Write code in manageable chunks (recommended chunk size: 500–800 lines, e.g., per function, class, or module) to prevent overloading.
+    - Write code in manageable chunks (recommended chunk size: 300–500 lines, e.g., per function, class, or module) to prevent overloading.
     - Save each increment to a versioned file using this format:
 
       ```
@@ -39,7 +39,7 @@ Begin with a concise checklist (3-7 bullets) of what you will do; keep items con
       - Update all references in the codebase to use the final filename.
       - Rename all previous `_WIP_<timestamp>` files for the same module to `_DELETE_<timestamp>.ext` to mark them for deletion.
       - Verify the renamed file is correctly referenced in the project (e.g., in imports or build scripts).
-    - Update ClaudeProgress.md to mark the module as Done and note the final filename.
+    - Update docs/PROGRESS.md to mark the module as Done and note the final filename.
 10. **Remain aware of output or token limits** with each new turn.
 
 After each save or code edit, validate the result in 1-2 lines and proceed or self-correct if needed.
